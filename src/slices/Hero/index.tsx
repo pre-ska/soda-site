@@ -10,6 +10,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Bounded } from "@/components/Bounded";
 import Button from "@/components/Button";
 import { TextSplitter } from "@/components/TextSplitter";
+import Scene from "@/slices/Hero/Scene";
+import { View } from "@react-three/drei";
 
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
@@ -61,7 +63,7 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
         start: "top top",
         end: "bottom bottom",
         scrub: 1.5,
-        markers: true,
+        // markers: true, // stavi markere na page di počinje i završava scroll animacija
       },
     });
 
@@ -98,6 +100,9 @@ const Hero = ({ slice }: HeroProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className="hero opacity-0"
     >
+      <View className="hero-scene pointer-events-none sticky top-0 z-50 -mt-[100vh] hidden h-screen w-screen md:block">
+        <Scene />
+      </View>
       <div className="grid">
         <div className="grid h-screen place-items-center">
           <div className="grid auto-rows-min place-items-center">
